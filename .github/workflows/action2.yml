@@ -33,14 +33,13 @@ jobs:
       - name: Check out Repo to the runner
         uses: actions/checkout@v2
 
+      - name: Verify main.tf
+        run: cat main.tf
+
       - name: Terraform Init
         uses: hashicorp/terraform-github-actions/init@v0.4.0
         env:
-          TF_ACTION_WORKING_DIR: /home/runner/work/KP-GHAction/KP-GHAction
-      
-      - name: Verify main.tf
-        run: cat main.tf
-          
+          TF_ACTION_WORKING_DIR: /home/runner/work/KP-GHAction/KP-GHAction          
       
       - name: Terraform Plan
         uses: hashicorp/terraform-github-actions/plan@v0.4.0
