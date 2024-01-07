@@ -26,3 +26,6 @@ jobs:
       
       - name: Verify AWS Credential
         run: aws configure list
+
+      - name: Verify s3 permission
+        run: aws s3 ls
