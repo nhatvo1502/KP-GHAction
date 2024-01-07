@@ -35,9 +35,11 @@ jobs:
 
       - name: Terraform Init
         uses: hashicorp/terraform-github-actions/init@v0.4.0
-        run: cat main.tf
         env:
           TF_ACTION_WORKING_DIR: /home/runner/work/KP-GHAction/KP-GHAction
+      
+      - name: Verify main.tf
+        run: cat main.tf
           
       
       - name: Terraform Plan
