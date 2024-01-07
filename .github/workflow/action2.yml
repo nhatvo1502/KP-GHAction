@@ -1,11 +1,13 @@
 on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   create-keypair:
-    runs-on: #ami with aws cli pre-installed
+    runs-on: ubuntu-latest
 
     steps:
       - name: Configure AWS Credentials
