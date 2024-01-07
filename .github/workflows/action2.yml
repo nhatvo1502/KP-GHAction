@@ -6,6 +6,7 @@ on:
 jobs:
   create-keypair:
     runs-on: ubuntu-latest
+    environment: Dev
 
     steps:
       - name: Verify aws
