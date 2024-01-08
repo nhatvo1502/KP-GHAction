@@ -32,3 +32,6 @@ jobs:
       
       - name: Verify main.tf
         run: cat main.tf
+
+      - name: Terraform destroy
+        run: terraform destroy -auto-approve
