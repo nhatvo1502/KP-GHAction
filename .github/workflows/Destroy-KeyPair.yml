@@ -27,5 +27,8 @@ jobs:
       - name: Verify AWS Credential
         run: aws configure list
 
-      - name: Verify s3 permission
-        run: aws s3 ls
+      - name: Copy main.tf to runner
+        run: actions/checkout@v2
+      
+      - name: Verify main.tf
+        run: cat main.tf
