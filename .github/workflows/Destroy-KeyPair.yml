@@ -28,7 +28,7 @@ jobs:
         run: aws configure list
 
       - name: Copy main.tf to runner
-        run: actions/checkout@v2
+        uses: actions/checkout@v2
       
       - name: Verify main.tf
         run: cat main.tf
