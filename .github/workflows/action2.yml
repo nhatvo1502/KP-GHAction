@@ -36,9 +36,8 @@ jobs:
       - name: Verify main.tf
         run: cat main.tf
 
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v3
-
+      #- name: Install Terraform
+      #  uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
