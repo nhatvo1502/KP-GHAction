@@ -38,3 +38,6 @@ jobs:
 
       - name: Terraform destroy
         run: terraform destroy -auto-approve
+      
+      - name: Delete tfstate file
+        run: aws s3 rm s3://keypair-1234/terraform.tfstate
