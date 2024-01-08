@@ -1,18 +1,18 @@
-name: My First Action
+name: Destroy-KeyPair
+
 on:
-  # trigger manually
   workflow_dispatch:
 
 jobs:
-  create-keypair:
+  build:
     runs-on: ubuntu-latest
     environment: Dev
 
     steps:
-      - name: Verify aws
+      - name: Verify AWS
         run: aws --version
-
-      - name: Configure AWS Credentials
+      
+      - name: Configurate AWS Credential
         env: 
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -23,24 +23,12 @@ jobs:
           echo "aws_access_key_id=${AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
           echo "aws_secret_access_key=${AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
           echo "region=${AWS_DEFAULT_REGION}" >> ~/.aws/credentials
+        
+      - name: Verify AWS Credentials
+        run: aws configure
+        
+      - name: Copy main.tf to runner
+        run: actions/checkout@v2
       
-      - name: Verify AWS Credential
-        run: aws configure list
-
-      - name: Verify s3 permission
-        run: aws s3 ls
-
-      - name: Check out Repo to the runner
-        uses: actions/checkout@v2
-
-      - name: Verify main.tf
-        run: cat main.tf
-
-      - name: Terraform Init
-        run: terraform init       
-      
-      - name: Terraform Plan
-        run: terraform plan
-      
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      - name: Terraform destroy
+        run: terraform destroy
